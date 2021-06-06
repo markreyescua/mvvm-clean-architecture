@@ -14,7 +14,8 @@
         <activity
             android:name=".ui.account.AccountActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MVVMBoilerplate.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,12 +26,13 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MVVMBoilerplate.NoActionBar" />
 
         <activity
             android:name=".ui.settings.SettingsActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait" />
+            android:theme="@style/Theme.MVVMBoilerplate.NoActionBar" />
 
     </application>
 
