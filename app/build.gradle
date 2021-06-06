@@ -6,6 +6,11 @@ plugins {
     id "androidx.navigation.safeargs.kotlin"
 }
 
+ext {
+    currentVersionCode = 1
+    currentVersionName = "1.0.0"
+}
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -14,25 +19,71 @@ android {
         applicationId "com.mcua.architecture"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode currentVersionCode
+        versionName currentVersionName
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+        signingConfig signingConfigs.debug
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+    flavorDimensions "environment"
+    productFlavors {
+        dev {
+            dimension "environment"
+            resValue "string", "app_name", "MVVM Architecture Develop"
+            applicationIdSuffix '.dev'
+            manifestPlaceholders = [scheme: ".dev"]
+            versionName = "$currentVersionName-dev"
+        }
+        stg {
+            dimension "environment"
+            resValue "string", "app_name", "MVVM Architecture Staging"
+            applicationIdSuffix '.staging'
+            manifestPlaceholders = [scheme: ".stg"]
+            versionName = "$currentVersionName-stg"
+        }
+        prd {
+            dimension "environment"
+            resValue "string", "app_name", "MVVM Architecture"
+            manifestPlaceholders = [scheme: ""]
+            versionName = "$currentVersionName"
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def project = "app"
+            def flavor = variant.productFlavors[0].name
+            def version = variant.versionName
+            def date = new Date()
+            def formattedDate = date.format('MM-dd-yy')
+            def newApkName = project + "-" + flavor + "-" + version + "-(" + formattedDate + ").apk"
+            outputFileName = new File(newApkName)
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file('release.keystore')
+            storePassword 'release'
+            keyAlias 'release'
+            keyPassword 'release'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
     }
 }
 
@@ -42,6 +93,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    //Multidex
+    implementation 'androidx.multidex:multidex:2.0.1'
 
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
