@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="account_username_hint">Username</string>
-    <string name="account_password_hint">Password</string>
-    <string name="account_sign_in_button_text">Sign In using Keycloak</string>
+    <string name="account_username_hint">Enter Username</string>
+    <string name="account_password_hint">Enter Password</string>
+    <string name="account_sign_in_button_text">Sign In</string>
     <string name="account_register_button_text">No Account Yet? Click Here to Register.</string>
 </resources>
