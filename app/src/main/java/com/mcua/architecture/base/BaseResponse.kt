@@ -2,14 +2,13 @@ package com.mcua.architecture.base
 
 import com.google.gson.Gson
 
-abstract class BaseModel {
+abstract class BaseResponse {
 
-    abstract val id: Int
-    abstract var createdAt: String?
-    abstract var updatedAt: String?
+    abstract val message: String?
+    abstract val error: String?
 
     fun toJsonString(): String {
         return Gson().toJson(this)
     }
-    
+
 }
