@@ -7,4 +7,85 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--System colors-->
+    <color name="colorPrimary">@color/primaryRegular</color>
+    <color name="colorPrimaryDark">@color/primaryDark2</color>
+    <color name="colorAccent">@color/primaryRegular</color>
+    <color name="transparent">@android:color/transparent</color>
+
+    <!-- Branding colors -->
+    <color name="primaryRegular">#3D9EA0</color>
+    <color name="primaryDark1">#249294</color>
+    <color name="primaryDark2">#0C8688</color>
+    <color name="primaryDark3">#05706D</color>
+    <color name="primaryLight1">#8AC4C6</color>
+    <color name="primaryLight2">#EBF5F5</color>
+
+    <color name="secondaryRegular">#4A3C9A</color>
+    <color name="secondaryDark1">#3B307B</color>
+    <color name="secondaryLight1">#6E62AE</color>
+    <color name="secondaryLight2">#928AC2</color>
+    <color name="secondaryLight3">#B6B1D6</color>
+    <color name="secondaryLight4">#ECEBF4</color>
+
+    <color name="tertiaryRegular">#F9CB40</color>
+    <color name="tertiaryDark1">#ffC44C</color>
+    <color name="tertiaryDark2">#FFAB00</color>
+    <color name="tertiaryLight1">#FAD566</color>
+    <color name="tertiaryLight2">#FBDB79</color>
+    <color name="tertiaryLight3">#FFF8DB</color>
+
+    <color name="successRegular">#37BB73</color>
+    <color name="successDark1">#05AA50</color>
+    <color name="successLight1">#69CC96</color>
+    <color name="successLight2">#E6F6ED</color>
+
+    <color name="infoRegular">#14B6FF</color>
+    <color name="infoDark1">#0091EA</color>
+    <color name="infoLight1">#69D1FF</color>
+    <color name="infoLight2">#F3FBFF</color>
+
+    <color name="warningRegular">#FFC44C</color>
+    <color name="warningDark1">#FFAB00</color>
+    <color name="warningLight1">#FAD566</color>
+    <color name="warningLight2">#FFF8DB</color>
+
+    <color name="dangerRegular">#E27E74</color>
+    <color name="dangerDark1">#D44638</color>
+    <color name="dangerLight1">#EAA39B</color>
+    <color name="dangerLight2">#FAECEB</color>
+
+    <color name="tin">#F9F9F9</color>
+    <color name="ash">#F3F3F3</color>
+    <color name="cloud">#EEEEEE</color>
+    <color name="nickel">#DDDDDD</color>
+    <color name="aluminium">#CCCCCC</color>
+    <color name="silver">#A7A9AC</color>
+    <color name="space_gray">#808285</color>
+    <color name="gun_metal">#58595B</color>
+    <color name="framework">#515a5c</color>
+    <color name="charcoal">#263133</color>
+
+    <color name="link">#0091EA</color>
+    <color name="linkHover">#0091EA</color>
+    <color name="loadingPrimary">#CCCCCC</color>
+    <color name="loadingSecondary">#E7E7E7</color>
+    <color name="loadingTertiary">#F2F2F2</color>
+
+    <color name="facebook">#3B5998</color>
+    <color name="twitter">#00A0D1</color>
+    <color name="googlePlus">#D34836</color>
+
+    <color name="bodyBackground">#FFFFFF</color>
+    <color name="error">#D54738</color>
+
+    <!--Toolbar Colors-->
+    <color name="toolbar_bg">@color/white</color>
+    <color name="toolbar_title">@color/charcoal</color>
+    <color name="toolbar_profile_section_bg">#80f9f9f9</color>
+    <color name="tab_selected">@color/primaryRegular</color>
+    <color name="tab_not_selected">@color/silver</color>
+    <color name="clickable">@color/infoDark1</color>
+    <color name="row_highlight">#dff2ea</color>
 </resources>
