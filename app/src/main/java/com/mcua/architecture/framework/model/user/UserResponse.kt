@@ -1,4 +1,4 @@
-package com.mcua.architecture.framework.data.user
+package com.mcua.architecture.framework.model.user
 
 import com.google.gson.annotations.SerializedName
 import com.mcua.architecture.base.BaseResponse
