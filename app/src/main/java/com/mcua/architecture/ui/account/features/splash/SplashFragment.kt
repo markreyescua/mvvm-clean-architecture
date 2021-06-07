@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
+import com.mcua.architecture.R
 import com.mcua.architecture.base.BaseFragment
 import com.mcua.architecture.databinding.FragmentSplashBinding
 
@@ -17,10 +18,15 @@ class SplashFragment : BaseFragment() {
 
     private lateinit var viewModel: SplashViewModel
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSplashBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -30,24 +36,21 @@ class SplashFragment : BaseFragment() {
         _binding = null
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.startSplashScreenTimeout()
-        viewModel.timeout.observe(viewLifecycleOwner, Observer { timeout ->
+        viewModel.timeout.observe(viewLifecycleOwner, { timeout ->
             if (timeout) {
                 goToLogin()
             }
         })
+        viewModel.startSplashScreenTimeout()
     }
 
     private fun goToLogin() {
-        val action = SplashFragmentDirections.actionGoToLogin()
-        Navigation.findNavController(binding.root).navigate(action)
+        val extras = FragmentNavigatorExtras(
+            binding.imageViewLogo to "imageView"
+        )
+        findNavController().navigate(R.id.actionGoToLogin, null, null, extras)
     }
 
 }

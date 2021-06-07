@@ -11,8 +11,10 @@
         tools:context=".ui.account.features.splash.SplashFragment">
 
         <ImageView
-            android:layout_width="@dimen/logo_dimens"
-            android:layout_height="@dimen/logo_dimens"
+            android:id="@+id/imageViewLogo"
+            android:transitionName="imageView"
+            android:layout_width="@dimen/dimens_logo"
+            android:layout_height="@dimen/dimens_logo"
             android:src="@drawable/ic_logo_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

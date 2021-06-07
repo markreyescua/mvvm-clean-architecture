@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 class SplashViewModel : ViewModel() {
 
     private val _timeout = MutableLiveData<Boolean>()
-    val timeout: LiveData<Boolean> = _timeout
+    val timeout: LiveData<Boolean> get() = _timeout
 
     fun startSplashScreenTimeout() = viewModelScope.launch {
         delay(3000)

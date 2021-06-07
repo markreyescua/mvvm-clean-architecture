@@ -15,7 +15,8 @@
             android:name=".ui.account.AccountActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MVVMBoilerplate.NoActionBar">
+            android:theme="@style/Theme.MVVMBoilerplate.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
