@@ -6,7 +6,6 @@ import okhttp3.Response
 import java.net.HttpURLConnection
 import javax.inject.Singleton
 
-@Singleton
 class NetworkInterceptor() : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {

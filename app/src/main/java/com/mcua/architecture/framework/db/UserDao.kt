@@ -1,4 +1,4 @@
-package com.mcua.architecture.framework.dao
+package com.mcua.architecture.framework.db
 
 import androidx.room.Dao
 import androidx.room.Insert

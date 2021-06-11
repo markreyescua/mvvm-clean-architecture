@@ -1,4 +1,4 @@
-package com.mcua.architecture.util
+package com.mcua.architecture.util.network
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

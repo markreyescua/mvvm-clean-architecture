@@ -1,13 +1,12 @@
-package com.mcua.architecture.framework.data
+package com.mcua.architecture.framework.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.mcua.architecture.framework.dao.UserDao
 import com.mcua.architecture.framework.model.User
-import com.mcua.architecture.util.JavaConverter
+import com.mcua.architecture.framework.api.JavaConverter
 
 @Database(entities = [User::class], version = 1, exportSchema = false)
 @TypeConverters(JavaConverter::class)

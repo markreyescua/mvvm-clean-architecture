@@ -1,4 +1,4 @@
-package com.mcua.architecture.util.network
+package com.mcua.architecture.base
 
 sealed class Resource<T>(
     val data: T? = null,

@@ -8,8 +8,13 @@ import timber.log.Timber
 
 class MyApp : Application() {
 
+    companion object {
+        lateinit var instance: MyApp private set
+    }
+
     override fun onCreate() {
         super.onCreate()
+        instance = this
         if (!IS_PRODUCTION) {
             Timber.plant(Timber.DebugTree())
         }

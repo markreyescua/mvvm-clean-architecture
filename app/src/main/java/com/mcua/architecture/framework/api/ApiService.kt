@@ -1,7 +1,7 @@
-package com.mcua.architecture.framework.data
+package com.mcua.architecture.framework.api
 
 import com.mcua.architecture.framework.model.User
-import com.mcua.architecture.util.network.Resource
+import com.mcua.architecture.base.Resource
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
