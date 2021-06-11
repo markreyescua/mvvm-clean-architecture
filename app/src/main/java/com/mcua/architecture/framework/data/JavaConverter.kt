@@ -1,4 +1,4 @@
-package com.mcua.architecture.framework.api
+package com.mcua.architecture.framework.data
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

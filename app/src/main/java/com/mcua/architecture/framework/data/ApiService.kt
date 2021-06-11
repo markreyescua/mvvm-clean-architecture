@@ -1,11 +1,8 @@
-package com.mcua.architecture.framework.api
+package com.mcua.architecture.framework.data
 
 import com.mcua.architecture.framework.model.User
 import com.mcua.architecture.base.Resource
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -31,12 +28,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST(CREATE_USER)
     suspend fun createUser(
-        @Field("username") username: String,
-        @Field("password") password: String,
-        @Field("email") email: String,
-        @Field("first_name") firstName: String,
-        @Field("last_name") lastName: String,
-        @Field("type") type: String,
+        @Body user: User
     ): Resource<User>
 
     @FormUrlEncoded

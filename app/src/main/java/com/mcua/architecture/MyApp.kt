@@ -4,8 +4,10 @@ import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
 import com.mcua.architecture.util.Constants.Companion.IS_PRODUCTION
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
+@HiltAndroidApp
 class MyApp : Application() {
 
     companion object {
