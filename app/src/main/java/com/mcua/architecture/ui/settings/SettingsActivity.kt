@@ -2,7 +2,7 @@ package com.mcua.architecture.ui.settings
 
 import android.os.Bundle
 import com.mcua.architecture.R
-import com.mcua.architecture.base.BaseActivity
+import com.mcua.architecture.core.base.BaseActivity
 
 class SettingsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

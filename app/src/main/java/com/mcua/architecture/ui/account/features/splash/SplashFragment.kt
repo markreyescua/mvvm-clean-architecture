@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.mcua.architecture.R
-import com.mcua.architecture.base.BaseFragment
+import com.mcua.architecture.core.base.BaseFragment
 import com.mcua.architecture.databinding.FragmentSplashBinding
 
 class SplashFragment : BaseFragment() {

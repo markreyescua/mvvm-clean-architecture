@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mcua.architecture.R
-import com.mcua.architecture.base.BaseFragment
+import com.mcua.architecture.core.base.BaseFragment
 
 class ResetFragment : BaseFragment() {
 

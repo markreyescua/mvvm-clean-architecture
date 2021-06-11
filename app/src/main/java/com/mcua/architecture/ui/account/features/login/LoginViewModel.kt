@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mcua.architecture.base.Resource
-import com.mcua.architecture.framework.model.User
+import com.mcua.architecture.core.base.Resource
+import com.mcua.architecture.core.data.model.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

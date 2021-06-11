@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.transition.TransitionInflater
-import com.mcua.architecture.base.BaseFragment
+import com.mcua.architecture.core.base.BaseFragment
 import com.mcua.architecture.databinding.FragmentLoginBinding
 
 class LoginFragment : BaseFragment() {
