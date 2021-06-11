@@ -1,6 +1,7 @@
 package com.mcua.architecture.framework.data
 
-import com.mcua.architecture.framework.model.user.UserResponse
+import com.mcua.architecture.framework.model.User
+import com.mcua.architecture.util.network.Resource
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -25,7 +26,7 @@ interface ApiService {
     }
 
     @GET(GET_USER)
-    suspend fun getUser(): UserResponse
+    suspend fun getUser(): Resource<User>
 
     @FormUrlEncoded
     @POST(CREATE_USER)
@@ -36,13 +37,13 @@ interface ApiService {
         @Field("first_name") firstName: String,
         @Field("last_name") lastName: String,
         @Field("type") type: String,
-    ): UserResponse
+    ): Resource<User>
 
     @FormUrlEncoded
     @POST(LOGIN_USER)
     suspend fun loginUser(
         @Field("username") username: String,
         @Field("password") password: String
-    ): UserResponse
+    ): Resource<User>
 
 }
