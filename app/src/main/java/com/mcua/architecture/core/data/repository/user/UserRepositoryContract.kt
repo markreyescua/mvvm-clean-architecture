@@ -1,16 +1,16 @@
 package com.mcua.architecture.core.data.repository.user
 
-import com.mcua.architecture.core.base.Resource
+import com.mcua.architecture.core.base.BaseResponse
 import com.mcua.architecture.core.data.model.User
 
 interface UserRepositoryContract {
 
     /***** api ******/
-    suspend fun getProfile(): Resource<User>
+    suspend fun getProfile(): BaseResponse<User>
 
-    suspend fun createUser(user: User): Resource<User>
+    suspend fun createUser(user: User): BaseResponse<User>
 
-    suspend fun loginUser(username: String, password: String): Resource<User>
+    suspend fun loginUser(username: String, password: String): BaseResponse<User>
 
     /***** room ******/
     suspend fun saveUserLocal(user: User)

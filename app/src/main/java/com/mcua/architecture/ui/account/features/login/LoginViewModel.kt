@@ -3,11 +3,13 @@ package com.mcua.architecture.ui.account.features.login
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mcua.architecture.MyApp
+import com.mcua.architecture.core.base.BaseResponse
 import com.mcua.architecture.core.data.model.User
 import com.mcua.architecture.core.data.repository.user.UserUseCases
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import javax.inject.Inject
 
 class LoginViewModel : ViewModel() {
@@ -30,6 +32,9 @@ class LoginViewModel : ViewModel() {
                 lastName = "Cua"
             )
             userUseCases.saveUserLocal(user)
+            val userResponse: BaseResponse<User> =
+                userUseCases.loginUser(user.username, "Connect1@1")
+            Timber.e("${userResponse.data?.toJsonString()}")
         }
     }
 

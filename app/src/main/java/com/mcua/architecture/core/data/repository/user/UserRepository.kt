@@ -1,6 +1,6 @@
 package com.mcua.architecture.core.data.repository.user
 
-import com.mcua.architecture.core.base.Resource
+import com.mcua.architecture.core.base.BaseResponse
 import com.mcua.architecture.core.data.model.User
 import com.mcua.architecture.core.data.repository.user.datasource_impl.UserDataSourceApi
 import com.mcua.architecture.core.data.repository.user.datasource_impl.UserDataSourceRoom
@@ -10,15 +10,15 @@ class UserRepository(
     private val userDataSourceRoomContract: UserDataSourceRoom
 ) : UserRepositoryContract {
 
-    override suspend fun getProfile(): Resource<User> {
+    override suspend fun getProfile(): BaseResponse<User> {
         return userDataSourceAPIContract.getProfile()
     }
 
-    override suspend fun createUser(user: User): Resource<User> {
+    override suspend fun createUser(user: User): BaseResponse<User> {
         return userDataSourceAPIContract.createUser(user)
     }
 
-    override suspend fun loginUser(username: String, password: String): Resource<User> {
+    override suspend fun loginUser(username: String, password: String): BaseResponse<User> {
         return userDataSourceAPIContract.loginUser(username, password)
     }
 
