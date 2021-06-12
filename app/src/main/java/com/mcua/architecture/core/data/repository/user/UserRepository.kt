@@ -2,24 +2,37 @@ package com.mcua.architecture.core.data.repository.user
 
 import com.mcua.architecture.core.base.Resource
 import com.mcua.architecture.core.data.model.User
+import com.mcua.architecture.core.data.repository.user.datasource.UserDataSourceRoom
+import com.mcua.architecture.core.data.repository.user.datasource.UserDataSourceAPI
+import com.mcua.architecture.core.data.repository.user.datasource.UserRepository
 
-interface UserRepository {
+class UserRepository(
+    private val userDataSourceAPI: UserDataSourceAPI,
+    private val userDataSourceRoom: UserDataSourceRoom
+) : UserRepository {
 
-    /***** api ******/
-    suspend fun getProfile(): Resource<User>
+    override suspend fun getProfile(): Resource<User> {
+        return userDataSourceAPI.getProfile()
+    }
 
-    suspend fun createUser(user: User): Resource<User>
+    override suspend fun createUser(user: User): Resource<User> {
+        return userDataSourceAPI.createUser(user)
+    }
 
-    suspend fun loginUser(username: String, password: String): Resource<User>
+    override suspend fun loginUser(username: String, password: String): Resource<User> {
+        return userDataSourceAPI.loginUser(username, password)
+    }
 
-    /***** room ******/
-    suspend fun saveUserLocal(user: User)
+    override suspend fun saveUserLocal(user: User) {
+        return userDataSourceRoom.saveUserLocal(user)
+    }
 
-    suspend fun getUserLocal(username: String): Resource<User>
+    override suspend fun getUserLocal(username: String): Resource<User> {
+        return userDataSourceRoom.getUserLocal(username)
+    }
 
-    suspend fun deleteUserLocal(username: String)
-
-    /***** graphql ******/
-    // TODO: add graphql repository here
+    override suspend fun deleteUserLocal(username: String) {
+        return userDataSourceRoom.deleteUserLocal(username)
+    }
 
 }

@@ -1,10 +1,10 @@
-package com.mcua.architecture.core.data.repository.user.usecases
+package com.mcua.architecture.core.data.repository.user.usecase
 
 import com.mcua.architecture.core.base.Resource
 import com.mcua.architecture.core.data.model.User
-import com.mcua.architecture.core.data.repository.user.UserRepository
+import com.mcua.architecture.core.data.repository.user.datasource.UserRepository
 
-class CreateUser(private val userRepository: UserRepository) {
+class CreateUserUseCase(private val userRepository: UserRepository) {
     suspend operator fun invoke(user: User): Resource<User> {
         return userRepository.createUser(user)
     }
