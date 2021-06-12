@@ -2,9 +2,9 @@ package com.mcua.architecture.core.data.repository.user.datasource_impl
 
 import com.mcua.architecture.core.data.db.UserDao
 import com.mcua.architecture.core.data.model.User
-import com.mcua.architecture.core.data.repository.user.datasource.UserDataSourceRoom
+import com.mcua.architecture.core.data.repository.user.datasource.UserDataSourceRoomContract
 
-class UserDataSourceRoomImpl(private val userDao: UserDao) : UserDataSourceRoom {
+class UserDataSourceRoom(private val userDao: UserDao) : UserDataSourceRoomContract {
 
     override suspend fun saveUserLocal(user: User) {
         return userDao.saveUser(user)

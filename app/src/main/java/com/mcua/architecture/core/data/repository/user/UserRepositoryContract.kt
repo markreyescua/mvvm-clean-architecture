@@ -1,9 +1,9 @@
-package com.mcua.architecture.core.data.repository.user.datasource
+package com.mcua.architecture.core.data.repository.user
 
 import com.mcua.architecture.core.base.Resource
 import com.mcua.architecture.core.data.model.User
 
-interface UserRepository {
+interface UserRepositoryContract {
 
     /***** api ******/
     suspend fun getProfile(): Resource<User>

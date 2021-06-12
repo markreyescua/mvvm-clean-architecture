@@ -1,28 +1,39 @@
 package com.mcua.architecture.ui.account.features.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mcua.architecture.core.base.Resource
+import com.mcua.architecture.MyApp
 import com.mcua.architecture.core.data.model.User
+import com.mcua.architecture.core.data.repository.user.UserUseCases
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 class LoginViewModel : ViewModel() {
 
-    private val _user: MutableLiveData<Resource<User>> = MutableLiveData()
-    val user: LiveData<Resource<User>> = _user
+    @Inject
+    lateinit var userUseCases: UserUseCases
+
+    init {
+        initializeDagger()
+    }
 
     fun login(username: String?, password: String?) = viewModelScope.launch {
         withContext(Dispatchers.IO) {
-            _user.postValue(Resource.Loading())
-            if (username.isNullOrBlank() || password.isNullOrBlank()) {
-                _user.postValue(Resource.Error(message = "Username and password are required."))
-                return@withContext
-            }
+            val user = User(
+                userId = "asg982tgj-32598lsdf",
+                username = "markreyescua",
+                email = "mark.r.cua@gmail.com",
+                type = "customer",
+                firstName = "Mark Edison",
+                lastName = "Cua"
+            )
+            userUseCases.saveUserLocal(user)
         }
     }
+
+    private fun initializeDagger() = MyApp.appComponent.inject(this)
+
 
 }
