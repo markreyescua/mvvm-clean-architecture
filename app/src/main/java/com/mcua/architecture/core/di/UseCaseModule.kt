@@ -1,15 +1,22 @@
-package com.mcua.architecture.core.di.module
+package com.mcua.architecture.core.di
 
 import com.mcua.architecture.core.data.repository.user.UserRepository
 import com.mcua.architecture.core.data.repository.user.UserUseCases
 import com.mcua.architecture.core.data.repository.user.usecase.*
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
-class UseCaseModule {
+@InstallIn(SingletonComponent::class)
+object UseCaseModule {
 
     @Provides
+    @Singleton
     fun providesUserUseCases(
         userRepository: UserRepository
     ): UserUseCases {

@@ -6,39 +6,27 @@ import com.mcua.architecture.MyApp
 import com.mcua.architecture.core.base.BaseResponse
 import com.mcua.architecture.core.data.model.User
 import com.mcua.architecture.core.data.repository.user.UserUseCases
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 
-class LoginViewModel : ViewModel() {
-
-    @Inject
-    lateinit var userUseCases: UserUseCases
-
-    init {
-        initializeDagger()
-    }
+@HiltViewModel
+class LoginViewModel @Inject constructor(
+    private val userUseCases: UserUseCases
+) : ViewModel() {
 
     fun login(username: String?, password: String?) = viewModelScope.launch {
         withContext(Dispatchers.IO) {
-            val user = User(
-                userId = "asg982tgj-32598lsdf",
-                username = "markreyescua",
-                email = "mark.r.cua@gmail.com",
-                type = "customer",
-                firstName = "Mark Edison",
-                lastName = "Cua"
-            )
-            userUseCases.saveUserLocal(user)
-            val userResponse: BaseResponse<User> =
-                userUseCases.loginUser(user.username, "Connect1@1")
-            Timber.e("${userResponse.data?.toJsonString()}")
+            if (username.isNullOrBlank() && password.isNullOrBlank()) {
+                return@withContext
+            }
+            val userResponse: BaseResponse<User> = userUseCases.loginUser(username!!, password!!)
+            userUseCases.saveUserLocal(userResponse.data!!)
         }
     }
-
-    private fun initializeDagger() = MyApp.appComponent.inject(this)
-
 
 }

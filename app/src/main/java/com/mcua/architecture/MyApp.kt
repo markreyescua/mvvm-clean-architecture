@@ -4,16 +4,14 @@ import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
 import com.facebook.stetho.Stetho
-import com.mcua.architecture.core.di.component.AppComponent
-import com.mcua.architecture.core.di.component.DaggerAppComponent
-import com.mcua.architecture.core.di.module.*
 import com.mcua.architecture.core.util.Constants.Companion.IS_PRODUCTION
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
+@HiltAndroidApp
 class MyApp : Application() {
 
     companion object {
-        lateinit var appComponent: AppComponent
         lateinit var instance: MyApp private set
     }
 
@@ -24,16 +22,6 @@ class MyApp : Application() {
             Timber.plant(Timber.DebugTree())
             Stetho.initializeWithDefaults(this)
         }
-
-        appComponent = DaggerAppComponent.builder()
-            .appModule(AppModule(this))
-            .databaseModule(DatabaseModule())
-            .dataSourceApiModule(DataSourceApiModule())
-            .dataSourceRoomModule(DataSourceRoomModule())
-            .repositoryModule(RepositoryModule())
-            .retrofitModule(RetrofitModule())
-            .useCaseModule(UseCaseModule())
-            .build()
     }
 
     override fun attachBaseContext(base: Context) {

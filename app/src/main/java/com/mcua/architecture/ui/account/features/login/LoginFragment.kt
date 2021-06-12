@@ -9,19 +9,25 @@ import androidx.navigation.Navigation
 import androidx.transition.TransitionInflater
 import com.mcua.architecture.core.base.BaseFragment
 import com.mcua.architecture.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginFragment : BaseFragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
+    @Inject
+    lateinit var loginViewModelFactory: LoginViewModelFactory
     private lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition =
             TransitionInflater.from(context).inflateTransition(android.R.transition.move)
-        viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        viewModel =
+            ViewModelProviders.of(this, loginViewModelFactory).get(LoginViewModel::class.java)
     }
 
     override fun onCreateView(

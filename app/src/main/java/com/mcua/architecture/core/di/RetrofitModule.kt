@@ -1,4 +1,4 @@
-package com.mcua.architecture.core.di.module
+package com.mcua.architecture.core.di
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
@@ -8,6 +8,8 @@ import com.mcua.architecture.core.data.api.ApiService
 import com.mcua.architecture.core.util.network.NetworkInterceptor
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -17,11 +19,10 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
-class RetrofitModule {
+@InstallIn(SingletonComponent::class)
+object RetrofitModule {
 
-    companion object {
-        private const val BASE_URL = "http://192.168.1.5:3000/"
-    }
+    private const val BASE_URL = "http://192.168.1.5:3000/"
 
     @Singleton
     @Provides
