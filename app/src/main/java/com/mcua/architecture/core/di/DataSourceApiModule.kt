@@ -1,7 +1,7 @@
 package com.mcua.architecture.core.di
 
 import com.mcua.architecture.core.data.api.ApiService
-import com.mcua.architecture.core.data.repository.user.datasource_impl.UserDataSourceApi
+import com.mcua.architecture.core.data.repository.user.datasource_impl.UserDataSourceApiImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,8 +14,8 @@ class DataSourceApiModule {
 
     @Provides
     @Singleton
-    fun providesUserApiDataSource(apiService: ApiService): UserDataSourceApi {
-        return UserDataSourceApi(apiService)
+    fun providesUserApiDataSource(apiService: ApiService): UserDataSourceApiImpl {
+        return UserDataSourceApiImpl(apiService)
     }
 
 }

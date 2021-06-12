@@ -1,7 +1,7 @@
 package com.mcua.architecture.core.di
 
-import com.mcua.architecture.core.data.db.UserDao
-import com.mcua.architecture.core.data.repository.user.datasource_impl.UserDataSourceRoom
+import com.mcua.architecture.core.data.db.dao.UserDao
+import com.mcua.architecture.core.data.repository.user.datasource_impl.UserDataSourceRoomImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,8 +14,8 @@ class DataSourceRoomModule {
 
     @Provides
     @Singleton
-    fun providesUserRoomDataSource(userDao: UserDao): UserDataSourceRoom {
-        return UserDataSourceRoom(userDao)
+    fun providesUserRoomDataSource(userDao: UserDao): UserDataSourceRoomImpl {
+        return UserDataSourceRoomImpl(userDao)
     }
 
 }

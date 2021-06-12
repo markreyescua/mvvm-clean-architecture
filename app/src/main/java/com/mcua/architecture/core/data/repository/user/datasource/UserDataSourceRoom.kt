@@ -2,7 +2,7 @@ package com.mcua.architecture.core.data.repository.user.datasource
 
 import com.mcua.architecture.core.data.model.User
 
-interface UserDataSourceRoomContract {
+interface UserDataSourceRoom {
 
     suspend fun saveUserLocal(user: User)
 

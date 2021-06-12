@@ -3,7 +3,7 @@ package com.mcua.architecture.core.di
 import android.app.Application
 import androidx.room.Room
 import com.mcua.architecture.core.data.db.DatabaseService
-import com.mcua.architecture.core.data.db.UserDao
+import com.mcua.architecture.core.data.db.dao.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
