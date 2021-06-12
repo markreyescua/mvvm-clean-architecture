@@ -5,10 +5,10 @@ import com.mcua.architecture.core.data.model.User
 
 interface UserDataSourceOffline {
 
-    suspend fun saveUser(user: User)
+    suspend fun saveUserLocal(user: User)
 
-    suspend fun getUser(username: String): Resource<User>
+    suspend fun getUserLocal(username: String): Resource<User>
 
-    suspend fun deleteUser(username: String)
+    suspend fun deleteUserLocal(username: String)
 
 }

@@ -33,7 +33,7 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST(LOGIN_USER)
-    suspend fun login(
+    suspend fun loginUser(
         @Field("username") username: String,
         @Field("password") password: String
     ): Resource<User>

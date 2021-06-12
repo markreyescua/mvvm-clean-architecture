@@ -7,15 +7,15 @@ import com.mcua.architecture.core.data.repository.user.datasource.UserDataSource
 
 class UserDataSourceOfflineImpl(private val userDao: UserDao) : UserDataSourceOffline {
 
-    override suspend fun saveUser(user: User) {
+    override suspend fun saveUserLocal(user: User) {
         return userDao.saveUser(user)
     }
 
-    override suspend fun getUser(username: String): Resource<User> {
+    override suspend fun getUserLocal(username: String): Resource<User> {
         return userDao.getUser(username)
     }
 
-    override suspend fun deleteUser(username: String) {
+    override suspend fun deleteUserLocal(username: String) {
         return userDao.deleteUser(username)
     }
 

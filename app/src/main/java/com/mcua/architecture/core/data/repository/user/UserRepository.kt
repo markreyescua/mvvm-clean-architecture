@@ -10,7 +10,7 @@ interface UserRepository {
 
     suspend fun createUser(user: User): Resource<User>
 
-    suspend fun login(username: String, password: String): Resource<User>
+    suspend fun loginUser(username: String, password: String): Resource<User>
 
     /***** offline ******/
     suspend fun saveUserLocal(user: User)
