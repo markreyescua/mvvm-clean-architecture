@@ -6,7 +6,7 @@ import com.mcua.architecture.core.data.repository.user.datasource.UserDataSource
 import com.mcua.architecture.core.data.repository.user.datasource.UserDataSourceAPI
 import com.mcua.architecture.core.data.repository.user.datasource.UserRepository
 
-class UserRepository(
+class UserRepositoryImpl(
     private val userDataSourceAPI: UserDataSourceAPI,
     private val userDataSourceRoom: UserDataSourceRoom
 ) : UserRepository {

@@ -42,6 +42,7 @@ android {
         dev {
             dimension "environment"
             resValue "string", "app_name", "MVVM Architecture Develop"
+            resValue "string", "BASE_URL", "http://localhost:3000/"
             applicationIdSuffix '.dev'
             manifestPlaceholders = [scheme: ".dev"]
             versionName = "$currentVersionName-dev"
@@ -49,6 +50,7 @@ android {
         stg {
             dimension "environment"
             resValue "string", "app_name", "MVVM Architecture Staging"
+            resValue "string", "BASE_URL", "http://localhost:3000/"
             applicationIdSuffix '.staging'
             manifestPlaceholders = [scheme: ".stg"]
             versionName = "$currentVersionName-stg"
@@ -56,6 +58,7 @@ android {
         prd {
             dimension "environment"
             resValue "string", "app_name", "MVVM Architecture"
+            resValue "string", "BASE_URL", "http://localhost:3000/"
             manifestPlaceholders = [scheme: ""]
             versionName = "$currentVersionName"
         }

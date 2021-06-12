@@ -5,7 +5,7 @@ import com.mcua.architecture.core.data.api.ApiService
 import com.mcua.architecture.core.data.model.User
 import com.mcua.architecture.core.data.repository.user.datasource.UserDataSourceAPI
 
-class UserDataSourceAPIImpl(private val apiService: ApiService) : UserDataSourceAPI {
+class UserDataSourceApiImpl(private val apiService: ApiService) : UserDataSourceAPI {
 
     override suspend fun getProfile(): Resource<User> = apiService.getProfile()
 
