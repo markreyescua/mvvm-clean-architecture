@@ -15,7 +15,7 @@ interface UserRepository {
     /***** room ******/
     suspend fun saveUserLocal(user: User)
 
-    suspend fun getUserLocal(username: String): Resource<User>
+    suspend fun getUserLocal(username: String): User
 
     suspend fun deleteUserLocal(username: String)
 

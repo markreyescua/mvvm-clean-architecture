@@ -1,6 +1,5 @@
 package com.mcua.architecture.core.data.repository.user.datasource_impl
 
-import com.mcua.architecture.core.base.Resource
 import com.mcua.architecture.core.data.db.UserDao
 import com.mcua.architecture.core.data.model.User
 import com.mcua.architecture.core.data.repository.user.datasource.UserDataSourceRoom
@@ -11,7 +10,7 @@ class UserDataSourceRoomImpl(private val userDao: UserDao) : UserDataSourceRoom 
         return userDao.saveUser(user)
     }
 
-    override suspend fun getUserLocal(username: String): Resource<User> {
+    override suspend fun getUserLocal(username: String): User {
         return userDao.getUser(username)
     }
 

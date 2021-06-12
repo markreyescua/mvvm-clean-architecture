@@ -27,7 +27,7 @@ class UserRepository(
         return userDataSourceRoom.saveUserLocal(user)
     }
 
-    override suspend fun getUserLocal(username: String): Resource<User> {
+    override suspend fun getUserLocal(username: String): User {
         return userDataSourceRoom.getUserLocal(username)
     }
 
