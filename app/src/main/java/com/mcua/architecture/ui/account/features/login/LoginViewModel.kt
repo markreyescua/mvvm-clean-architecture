@@ -6,12 +6,14 @@ import com.mcua.architecture.MyApp
 import com.mcua.architecture.core.base.BaseResponse
 import com.mcua.architecture.core.data.model.User
 import com.mcua.architecture.core.data.repository.user.UserUseCases
+import com.mcua.architecture.core.util.ext.safeLogError
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
+import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,8 +26,14 @@ class LoginViewModel @Inject constructor(
             if (username.isNullOrBlank() && password.isNullOrBlank()) {
                 return@withContext
             }
-            val userResponse: BaseResponse<User> = userUseCases.loginUser(username!!, password!!)
-            userUseCases.saveUserLocal(userResponse.data!!)
+            try {
+                val userResponse = userUseCases.loginUser(username!!, password!!)
+                val user = userResponse.data!!
+                userUseCases.saveUserLocal(user)
+                safeLogError(user.toJsonString())
+            } catch (e: Exception) {
+                safeLogError(msg = e.localizedMessage.toString())
+            }
         }
     }
 
