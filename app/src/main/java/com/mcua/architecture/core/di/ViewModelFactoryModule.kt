@@ -14,8 +14,8 @@ class ViewModelFactoryModule {
 
     @Singleton
     @Provides
-    fun providesLoginViewModel(userUseCases: UserUseCases): LoginViewModelFactory {
-        return LoginViewModelFactory((userUseCases))
+    fun providesLoginViewModelFactory(userUseCases: UserUseCases): LoginViewModelFactory {
+        return LoginViewModelFactory(userUseCases)
     }
 
 }
