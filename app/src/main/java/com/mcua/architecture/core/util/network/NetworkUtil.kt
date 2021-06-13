@@ -9,6 +9,7 @@ import android.telephony.TelephonyManager
 import androidx.lifecycle.MutableLiveData
 import com.mcua.architecture.MyApp
 
+@Suppress("DEPRECATION")
 object NetworkUtil {
 
     private const val NETWORK_TYPE_NONE = 0

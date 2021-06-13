@@ -7,6 +7,7 @@ import com.mcua.architecture.core.data.repository.user.UserUseCases
 class LoginViewModelFactory(
     private val userUseCases: UserUseCases
 ) : ViewModelProvider.Factory {
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return LoginViewModel(userUseCases) as T
     }

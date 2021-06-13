@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'kotlin-android-extensions'
     id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
 }
@@ -121,12 +120,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
-
-    // dependency injection
-//    implementation "com.google.dagger:dagger:$dagger_version"
-//    implementation "com.google.dagger:dagger-android-support:$dagger_version"
-//    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-//    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
     // HILT dependency injection
     implementation("com.google.dagger:hilt-android:$hilt_version")
