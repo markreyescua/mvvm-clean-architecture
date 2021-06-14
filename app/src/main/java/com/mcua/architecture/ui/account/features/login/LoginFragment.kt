@@ -8,8 +8,10 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.transition.TransitionInflater
 import com.mcua.architecture.core.base.BaseFragment
+import com.mcua.architecture.core.data.model.server.Resource
 import com.mcua.architecture.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -49,7 +51,6 @@ class LoginFragment : BaseFragment() {
             buttonRegister.setOnClickListener {
                 goToRegisterAccount()
             }
-
             buttonSignIn.setOnClickListener {
                 dismissKeyboard()
                 viewModel.login(
@@ -58,6 +59,20 @@ class LoginFragment : BaseFragment() {
                 )
             }
         }
+
+        viewModel.user.observe(viewLifecycleOwner, { resource ->
+            when (resource) {
+                is Resource.Error -> {
+                    Timber.e(resource.message)
+                }
+                is Resource.Loading -> {
+                    Timber.e("Resource loading")
+                }
+                is Resource.Success -> {
+                    Timber.e(resource.data?.toJsonString())
+                }
+            }
+        })
     }
 
     private fun goToRegisterAccount() {
