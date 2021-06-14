@@ -5,8 +5,8 @@ import android.content.Context
 import androidx.multidex.MultiDex
 import com.facebook.stetho.Stetho
 import com.mcua.architecture.core.util.Constants.Companion.IS_PRODUCTION
+import com.mcua.architecture.core.util.SafeLog
 import dagger.hilt.android.HiltAndroidApp
-import timber.log.Timber
 
 @HiltAndroidApp
 class MyApp : Application() {
@@ -19,7 +19,7 @@ class MyApp : Application() {
         super.onCreate()
         instance = this
         if (!IS_PRODUCTION) {
-            Timber.plant(Timber.DebugTree())
+            SafeLog.plant(SafeLog.DebugTree())
             Stetho.initializeWithDefaults(this)
         }
     }

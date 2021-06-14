@@ -5,15 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.transition.TransitionInflater
 import com.mcua.architecture.core.base.BaseFragment
 import com.mcua.architecture.core.data.model.server.Resource
+import com.mcua.architecture.core.util.SafeLog
 import com.mcua.architecture.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment() {
@@ -60,16 +58,16 @@ class LoginFragment : BaseFragment() {
         viewModel.user.observe(viewLifecycleOwner, { resource ->
             when (resource) {
                 is Resource.Error -> {
-                    Timber.e(resource.error)
+                    SafeLog.e(resource.error)
                 }
                 is Resource.Loading -> {
-                    Timber.e("Resource loading")
+                    SafeLog.e("Resource loading")
                 }
                 is Resource.Success -> {
-                    Timber.e(resource.data.toJsonString())
+                    SafeLog.e(resource.data.toJsonString())
                 }
                 is Resource.NetworkError -> {
-                    Timber.e("Network error")
+                    SafeLog.e("Network error")
                 }
             }
         })
