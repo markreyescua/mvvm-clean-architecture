@@ -63,13 +63,16 @@ class LoginFragment : BaseFragment() {
         viewModel.user.observe(viewLifecycleOwner, { resource ->
             when (resource) {
                 is Resource.Error -> {
-                    Timber.e(resource.message)
+                    Timber.e(resource.error)
                 }
                 is Resource.Loading -> {
                     Timber.e("Resource loading")
                 }
                 is Resource.Success -> {
-                    Timber.e(resource.data?.toJsonString())
+                    Timber.e(resource.data.toJsonString())
+                }
+                is Resource.NetworkError -> {
+                    Timber.e("Network error")
                 }
             }
         })
