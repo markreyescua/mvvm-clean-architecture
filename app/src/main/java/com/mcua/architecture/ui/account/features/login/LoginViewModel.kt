@@ -1,13 +1,10 @@
 package com.mcua.architecture.ui.account.features.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.mcua.architecture.core.data.model.User
+import com.mcua.architecture.core.data.model.server.Resource
 import com.mcua.architecture.core.data.repository.user.UserUseCases
 import com.mcua.architecture.core.util.network.NetworkErrorUtil.getResourceError
-import com.mcua.architecture.core.data.model.server.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

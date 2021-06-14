@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.transition.TransitionInflater
@@ -20,16 +21,12 @@ class LoginFragment : BaseFragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var loginViewModelFactory: LoginViewModelFactory
-    private lateinit var viewModel: LoginViewModel
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition =
             TransitionInflater.from(context).inflateTransition(android.R.transition.move)
-        viewModel =
-            ViewModelProviders.of(this, loginViewModelFactory).get(LoginViewModel::class.java)
     }
 
     override fun onCreateView(
