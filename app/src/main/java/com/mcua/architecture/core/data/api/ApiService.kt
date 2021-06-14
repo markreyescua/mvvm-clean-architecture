@@ -1,6 +1,6 @@
 package com.mcua.architecture.core.data.api
 
-import com.mcua.architecture.core.base.BaseResponse
+import com.mcua.architecture.core.data.model.server.DataResponse
 import com.mcua.architecture.core.data.model.User
 import retrofit2.http.*
 
@@ -23,19 +23,19 @@ interface ApiService {
     }
 
     @GET(GET_USER)
-    suspend fun getProfile(): BaseResponse<User>
+    suspend fun getProfile(): DataResponse<User>
 
     @FormUrlEncoded
     @POST(CREATE_USER)
     suspend fun createUser(
         @Body user: User
-    ): BaseResponse<User>
+    ): DataResponse<User>
 
     @FormUrlEncoded
     @POST(LOGIN_USER)
     suspend fun loginUser(
         @Field("username") username: String,
         @Field("password") password: String
-    ): BaseResponse<User>
+    ): DataResponse<User>
 
 }

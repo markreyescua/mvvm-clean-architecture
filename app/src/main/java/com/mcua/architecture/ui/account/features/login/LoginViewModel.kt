@@ -32,20 +32,18 @@ class LoginViewModel @Inject constructor(
                 userUseCases.saveUserLocal(user)
                 Timber.e(user.toJsonString())
             } catch (throwable: Throwable) {
+                Timber.e(throwable.localizedMessage)
                 when (throwable) {
                     is IOException -> {
                         Timber.e("IOException")
-                        ResultWrapper.NetworkError
                     }
                     is HttpException -> {
                         val code = throwable.code()
                         val errorResponse = getErrorMessage(throwable)
                         Timber.e(errorResponse?.message)
-                        ResultWrapper.GenericError(code, errorResponse)
                     }
                     else -> {
                         Timber.e("GenericError")
-                        ResultWrapper.GenericError(null, null)
                     }
                 }
             }
