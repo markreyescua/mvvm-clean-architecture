@@ -51,6 +51,7 @@ class LoginFragment : BaseFragment() {
             }
 
             buttonSignIn.setOnClickListener {
+                dismissKeyboard()
                 viewModel.login(
                     editTextUsername.text.toString().trim(),
                     editTextPassword.text.toString().trim()
