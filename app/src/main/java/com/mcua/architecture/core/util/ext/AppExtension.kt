@@ -23,6 +23,10 @@ fun Context.hideKeyboard(view: View) {
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
+/**
+ * @param msg   - Message to show in toast
+ * @param long  - true = LENGTH_LONG, false = LENGTH_SHORT
+ */
 fun Fragment.showToast(msg: String, long: Boolean = true) {
     val duration = if (long) {
         Toast.LENGTH_LONG

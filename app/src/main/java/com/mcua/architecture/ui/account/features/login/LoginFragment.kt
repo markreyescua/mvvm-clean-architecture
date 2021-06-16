@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.transition.TransitionInflater
@@ -27,6 +28,9 @@ class LoginFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition =
             TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            activity?.moveTaskToBack(true)
+        }
     }
 
     override fun onCreateView(
@@ -39,6 +43,7 @@ class LoginFragment : BaseFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        viewModel.clearUser()
         _binding = null
     }
 
@@ -66,6 +71,7 @@ class LoginFragment : BaseFragment() {
                     SafeLog.e("Resource loading")
                 }
                 is Resource.Success -> {
+                    SafeLog.e(resource.data.toJsonString())
                     activity?.let { context ->
                         showToast("Successfully signed in")
                         startActivity(MainActivity.getIntent(context))
@@ -73,6 +79,9 @@ class LoginFragment : BaseFragment() {
                 }
                 is Resource.NetworkError -> {
                     showToast("Network error")
+                }
+                is Resource.Empty -> {
+
                 }
             }
         })
