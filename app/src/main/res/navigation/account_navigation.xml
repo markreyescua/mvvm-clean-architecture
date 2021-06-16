@@ -9,7 +9,7 @@
         android:id="@+id/splashFragment"
         android:name="com.mcua.architecture.ui.account.features.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/actionGoToLogin"
             app:destination="@id/loginFragment" />
@@ -18,10 +18,14 @@
         android:id="@+id/loginFragment"
         android:name="com.mcua.architecture.ui.account.features.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/actionGoToReset"
-            app:destination="@id/resetFragment" />
+            app:destination="@id/resetFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/resetFragment"
