@@ -10,7 +10,9 @@ import androidx.transition.TransitionInflater
 import com.mcua.architecture.core.base.BaseFragment
 import com.mcua.architecture.core.data.model.server.Resource
 import com.mcua.architecture.core.util.SafeLog
+import com.mcua.architecture.core.util.ext.showToast
 import com.mcua.architecture.databinding.FragmentLoginBinding
+import com.mcua.architecture.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -64,10 +66,13 @@ class LoginFragment : BaseFragment() {
                     SafeLog.e("Resource loading")
                 }
                 is Resource.Success -> {
-                    SafeLog.e(resource.data.toJsonString())
+                    activity?.let { context ->
+                        showToast("Successfully signed in")
+                        startActivity(MainActivity.getIntent(context))
+                    }
                 }
                 is Resource.NetworkError -> {
-                    SafeLog.e("Network error")
+                    showToast("Network error")
                 }
             }
         })
