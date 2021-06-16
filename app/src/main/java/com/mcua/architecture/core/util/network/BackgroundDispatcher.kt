@@ -20,7 +20,7 @@ object BackgroundDispatcher: CoroutineDispatcher() {
         private val threadCount = AtomicInteger(0)
         private val nextThreadName get() = "BackgroundDispatcher-worker-${threadCount.incrementAndGet()}"
 
-        override fun newThread(runnable: java.lang.Runnable): Thread {
+        override fun newThread(runnable: Runnable): Thread {
             return Thread(runnable, nextThreadName)
         }
     }
