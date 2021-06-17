@@ -1,8 +1,8 @@
 package com.mcua.architecture.core.di
 
 import com.mcua.architecture.core.data.repository.user.UserRepository
-import com.mcua.architecture.core.data.repository.user.datasource_impl.UserDataSourceApiImpl
-import com.mcua.architecture.core.data.repository.user.datasource_impl.UserDataSourceRoomImpl
+import com.mcua.architecture.core.data.repository.user.datasource.UserDataSourceApi
+import com.mcua.architecture.core.data.repository.user.datasource.UserDataSourceRoom
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,12 +16,12 @@ class RepositoryModule {
     @Provides
     @Singleton
     fun providesUserRepository(
-        userDataSourceAPIImpl: UserDataSourceApiImpl,
-        userDataSourceRoomImpl: UserDataSourceRoomImpl
+        userDataSourceAPI: UserDataSourceApi,
+        userDataSourceRoom: UserDataSourceRoom
     ): UserRepository {
         return UserRepository(
-            userDataSourceAPIImpl,
-            userDataSourceRoomImpl
+            userDataSourceAPI,
+            userDataSourceRoom
         )
     }
 

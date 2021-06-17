@@ -2,15 +2,15 @@ package com.mcua.architecture.core.data.repository.user
 
 import com.mcua.architecture.core.data.model.server.DataResponse
 import com.mcua.architecture.core.data.model.User
+import com.mcua.architecture.core.data.repository.user.datasource_contract.UserDataSourceApiContract
+import com.mcua.architecture.core.data.repository.user.datasource_contract.UserDataSourceRoomContract
 import com.mcua.architecture.core.data.repository.user.datasource.UserDataSourceApi
 import com.mcua.architecture.core.data.repository.user.datasource.UserDataSourceRoom
-import com.mcua.architecture.core.data.repository.user.datasource_impl.UserDataSourceApiImpl
-import com.mcua.architecture.core.data.repository.user.datasource_impl.UserDataSourceRoomImpl
 
 class UserRepository(
-    private val userDataSourceApi: UserDataSourceApiImpl,
-    private val userDataSourceRoom: UserDataSourceRoomImpl
-) : UserDataSourceApi, UserDataSourceRoom {
+    private val userDataSourceApi: UserDataSourceApi,
+    private val userDataSourceRoom: UserDataSourceRoom
+) : UserDataSourceApiContract, UserDataSourceRoomContract {
 
     override suspend fun getProfile(): DataResponse<User> {
         return userDataSourceApi.getProfile()

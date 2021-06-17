@@ -1,13 +1,21 @@
 package com.mcua.architecture.core.data.repository.user.datasource
 
+import com.mcua.architecture.core.data.db.dao.UserDao
 import com.mcua.architecture.core.data.model.User
+import com.mcua.architecture.core.data.repository.user.datasource_contract.UserDataSourceRoomContract
 
-interface UserDataSourceRoom {
+class UserDataSourceRoom(private val userDao: UserDao) : UserDataSourceRoomContract {
 
-    suspend fun saveUserLocal(user: User)
+    override suspend fun saveUserLocal(user: User) {
+        return userDao.saveUser(user)
+    }
 
-    suspend fun getUserLocal(username: String): User
+    override suspend fun getUserLocal(username: String): User {
+        return userDao.getUser(username)
+    }
 
-    suspend fun deleteUserLocal(username: String)
+    override suspend fun deleteUserLocal(username: String) {
+        return userDao.deleteUser(username)
+    }
 
 }

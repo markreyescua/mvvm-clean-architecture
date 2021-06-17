@@ -6,7 +6,6 @@ import com.mcua.architecture.core.data.model.server.Resource
 import com.mcua.architecture.core.data.repository.user.UserUseCases
 import com.mcua.architecture.core.util.SafeLog
 import com.mcua.architecture.core.util.exception.NetworkException
-import com.mcua.architecture.core.util.ext.isNetworkAvailable
 import com.mcua.architecture.core.util.network.NetworkErrorUtil.getResourceError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
