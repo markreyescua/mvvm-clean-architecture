@@ -10,7 +10,7 @@ object NetworkErrorUtil {
 
     fun getResourceError(throwable: Throwable) = when (throwable) {
         is IOException -> {
-            Resource.NetworkError
+            Resource.NetworkError("You need an internet connection to perform this action.")
         }
         is HttpException -> {
             val code = throwable.code()
@@ -21,7 +21,7 @@ object NetworkErrorUtil {
             )
         }
         else -> {
-            Resource.NetworkError
+            Resource.NetworkError("You need an internet connection to perform this action.")
         }
     }
 

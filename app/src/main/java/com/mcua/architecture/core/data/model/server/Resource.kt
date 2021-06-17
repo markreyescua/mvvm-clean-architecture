@@ -6,7 +6,7 @@ sealed class Resource<out T> {
 
     data class Error(val code: Int? = null, val error: String? = null) : Resource<Nothing>()
 
-    object NetworkError : Resource<Nothing>()
+    data class NetworkError(val error: String? = null) : Resource<Nothing>()
 
     object Loading : Resource<Nothing>()
 

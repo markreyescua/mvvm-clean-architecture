@@ -5,8 +5,11 @@ import com.mcua.architecture.core.data.model.User
 import com.mcua.architecture.core.data.model.server.Resource
 import com.mcua.architecture.core.data.repository.user.UserUseCases
 import com.mcua.architecture.core.util.SafeLog
+import com.mcua.architecture.core.util.exception.NetworkException
+import com.mcua.architecture.core.util.ext.isNetworkAvailable
 import com.mcua.architecture.core.util.network.NetworkErrorUtil.getResourceError
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,7 +25,10 @@ class LoginViewModel @Inject constructor(
     val user: LiveData<Resource<User>> = _user
 
     fun login(username: String?, password: String?) = viewModelScope.launch {
-        withContext(Dispatchers.IO) {
+        val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+            SafeLog.e(throwable)
+        }
+        withContext(Dispatchers.IO + exceptionHandler) {
             if (username.isNullOrBlank() && password.isNullOrBlank()) {
                 return@withContext
             }
@@ -33,7 +39,7 @@ class LoginViewModel @Inject constructor(
                 userUseCases.saveUserLocal(user)
                 _user.postValue(Resource.Success(user))
             } catch (throwable: Throwable) {
-                _user.postValue(getResourceError(throwable))
+                _user.postValue(getResourceError(NetworkException("Logging in requires internet connection.")))
             }
         }
     }

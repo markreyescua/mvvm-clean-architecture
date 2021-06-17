@@ -64,24 +64,26 @@ class LoginFragment : BaseFragment() {
 
         viewModel.user.observe(viewLifecycleOwner, { resource ->
             when (resource) {
-                is Resource.Error -> {
-                    SafeLog.e(resource.error)
-                }
                 is Resource.Loading -> {
                     SafeLog.e("Resource loading")
                 }
                 is Resource.Success -> {
-                    SafeLog.e(resource.data.toJsonString())
+                    showToast("Successfully signed in")
                     activity?.let { context ->
-                        showToast("Successfully signed in")
                         startActivity(MainActivity.getIntent(context))
                     }
                 }
+                is Resource.Error -> {
+                    showToast(resource.error!!)
+                }
                 is Resource.NetworkError -> {
-                    showToast("Network error")
+                    showToast(resource.error!!)
                 }
                 is Resource.Empty -> {
-
+                    binding.apply {
+                        editTextUsername.setText("")
+                        editTextPassword.setText("")
+                    }
                 }
             }
         })
