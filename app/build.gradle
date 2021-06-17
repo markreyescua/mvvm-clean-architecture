@@ -115,18 +115,17 @@ dependencies {
     // room database
     implementation("androidx.room:room-runtime:$room_version")
     implementation("androidx.legacy:legacy-support-v4:$room_legacy_support_version")
-    kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
-
-//    // data store
-//    implementation("androidx.datastore:datastore:$datastore_version")
-//    implementation("androidx.datastore:datastore-preferences:$datastore_version")
+    kapt("androidx.room:room-compiler:$room_version")
 
     // HILT dependency injection + fragment + view model
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_ktx_version")
     implementation("com.google.dagger:hilt-android:$hilt_version")
     kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
+
+    // Preferences DataStore
+    implementation("androidx.datastore:datastore-preferences:$datastore_version")
 
     // RETROFIT
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
