@@ -26,6 +26,7 @@ data class User(
     @SerializedName("token") var token: Token? = null,
 ) : BaseModel() {
 
+
     data class Token(
         @SerializedName("access_token") var accessToken: String? = null,
         @SerializedName("refresh_token") var refreshToken: String? = null,
